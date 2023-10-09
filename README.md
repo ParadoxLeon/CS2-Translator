@@ -1,3 +1,12 @@
+# THIS IS A FORK (WIP)
+
+## TODO
+
+- Dark Mode
+- Remove or reimplement telnet
+- Change the default location to fit CS2
+- Change the README to fit the "new" application
+
 # CSGO-Translator
 Easy to use, single-file CS:GO chat translation tool. 
 
