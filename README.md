@@ -1,6 +1,6 @@
 # THIS IS A FORK (WIP)
 
-## TODO
+# TODO
 
 - Dark Mode
 - Remove or reimplement telnet
