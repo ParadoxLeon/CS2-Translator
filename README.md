@@ -3,7 +3,7 @@
 # TODO
 
 - ~~Dark Mode~~
-- Remove or reimplement telnet
+- ~~Remove or~~ reimplement telnet (if possible)
 - ~~Change the default location to fit CS2~~
 - Change the README to fit the "new" application
 - maybe change translation api to use DeepL instead of google

@@ -15,9 +15,11 @@ namespace CsTranslator
      * <summary>
      *Interaction logic for OptionsWindow.xaml
      * </summary>
+     * commented strings related to telnet
      */
     public partial class OptionsWindow 
     {
+        /* telnet is removed for now since it is not working in cs2
         private ChatType TransToRadioButtons
         {
             get => RbTransToAll.IsChecked != null && (bool) (RbTransToAll.IsChecked) ? ChatType.All : ChatType.Team;
@@ -33,6 +35,7 @@ namespace CsTranslator
                 }
             }
         }
+        
         private TelnetGrant CommandsFromRadioButtons
         {
             get
@@ -61,7 +64,9 @@ namespace CsTranslator
                 }
             }
         }
-        private TelnetGrant TransFromCheckBoxes
+
+        
+         private TelnetGrant TransFromCheckBoxes
         {
             get
             {
@@ -98,6 +103,7 @@ namespace CsTranslator
                 }
             }
         }
+        */
         private bool IgnoreOwnMessages
         {
             get => CbIgnoreOwnMessages.IsChecked != null && (bool) CbIgnoreOwnMessages.IsChecked;
@@ -113,16 +119,16 @@ namespace CsTranslator
                 if (!string.IsNullOrEmpty(value))
                 {
                     CbIgnoreOwnMessages.IsEnabled = true;
-                    RbCommandsSelf.IsEnabled = true;
+                    //RbCommandsSelf.IsEnabled = true;
                 }
                 else
                 {
                     CbIgnoreOwnMessages.IsEnabled = false;
                     CbIgnoreOwnMessages.IsChecked = false;
-                    RbCommandsSelf.IsEnabled = false;
+                    //RbCommandsSelf.IsEnabled = false;
                     
-                    if (RbCommandsSelf.IsChecked != null && (bool) RbCommandsSelf.IsChecked)
-                        RbCommandsTeam.IsChecked = true;
+                    //if (RbCommandsSelf.IsChecked != null && (bool) RbCommandsSelf.IsChecked)
+                    //    RbCommandsTeam.IsChecked = true;
                 }
             }
         }
@@ -138,10 +144,10 @@ namespace CsTranslator
             TbFolderPath.Text = OptionsManager.InstallationPath;
             TbLang.Text = OptionsManager.Language;
             OwnUsername = OptionsManager.OwnUsername;
-            TbTelnetPort.Text = OptionsManager.TelnetPort.ToString();
-            TransToRadioButtons = OptionsManager.SendTranslationsTo;
-            CommandsFromRadioButtons = OptionsManager.AllowCommandsFrom;
-            TransFromCheckBoxes = OptionsManager.SendTranslationsFrom;
+            //TbTelnetPort.Text = OptionsManager.TelnetPort.ToString();
+            //TransToRadioButtons = OptionsManager.SendTranslationsTo;
+            //CommandsFromRadioButtons = OptionsManager.AllowCommandsFrom;
+            //TransFromCheckBoxes = OptionsManager.SendTranslationsFrom;
             IgnoreOwnMessages = OptionsManager.IgnoreOwnMessages;
         }
 
@@ -150,10 +156,10 @@ namespace CsTranslator
             OptionsManager.InstallationPath = TbFolderPath.Text;
             OptionsManager.Language = TbLang.Text;
             OptionsManager.OwnUsername = OwnUsername;
-            OptionsManager.TelnetPort = int.Parse(TbTelnetPort.Text);
-            OptionsManager.SendTranslationsTo = TransToRadioButtons;
-            OptionsManager.AllowCommandsFrom = CommandsFromRadioButtons;
-            OptionsManager.SendTranslationsFrom = TransFromCheckBoxes;
+            //OptionsManager.TelnetPort = int.Parse(TbTelnetPort.Text);
+            //OptionsManager.SendTranslationsTo = TransToRadioButtons;
+            //OptionsManager.AllowCommandsFrom = CommandsFromRadioButtons;
+            //OptionsManager.SendTranslationsFrom = TransFromCheckBoxes;
             OptionsManager.IgnoreOwnMessages = IgnoreOwnMessages; 
             
             OptionsManager.Save();
@@ -177,16 +183,16 @@ namespace CsTranslator
             if (((TextBox) sender).Text.Length > 0)
             {
                 CbIgnoreOwnMessages.IsEnabled = true;
-                RbCommandsSelf.IsEnabled = true;
+                //RbCommandsSelf.IsEnabled = true;
             }
             else
             {
                 CbIgnoreOwnMessages.IsEnabled = false;
                 CbIgnoreOwnMessages.IsChecked = false;
-                RbCommandsSelf.IsEnabled = false;
+                //RbCommandsSelf.IsEnabled = false;
                 
-                if (RbCommandsSelf.IsChecked != null && (bool) RbCommandsSelf.IsChecked)
-                    RbCommandsTeam.IsChecked = true;
+                //if (RbCommandsSelf.IsChecked != null && (bool) RbCommandsSelf.IsChecked)
+                //    RbCommandsTeam.IsChecked = true;
             }
         }
 
@@ -195,5 +201,7 @@ namespace CsTranslator
             Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
             e.Handled = true;
         }
+
+
     }
 }

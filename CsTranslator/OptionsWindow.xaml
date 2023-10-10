@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CsTranslator"
         mc:Ignorable="d"
-        Title="CS-Translator - Options" ResizeMode="NoResize" Height="395" Width="675" Background="#FF2F2F2F">
+        Title="CS-Translator - Options" ResizeMode="NoResize" Height="220" Width="675" Background="#FF2F2F2F">
     <Grid Margin="0,0,0,3">
         <Label Content="Install location:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,11,0,0" Foreground="White"/>
         <TextBox x:Name="TbFolderPath" HorizontalAlignment="Left" Height="23" Margin="104,15,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="542"/>
@@ -20,12 +20,14 @@
         </TextBlock>
         <Label Content="Own username:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,81,0,0" Foreground="White"/>
         <TextBox x:Name="TbOwnUsername" TextChanged="TbOwnUsername_TextChanged" HorizontalAlignment="Left" Height="23" Margin="104,85,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="542"/>
-        <Label Content="Required for ignoring own messages and allowing commands from self" HorizontalAlignment="Left" Margin="102,102,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="10" Foreground="White"/>
+        <Label Content="Required for ignoring own messages" HorizontalAlignment="Left" Margin="102,102,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="10" Foreground="White"/>
 
         <Label Content="Ignore own messages:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,132,0,0" Foreground="White"/>
         <CheckBox x:Name="CbIgnoreOwnMessages" HorizontalAlignment="Left" Margin="143,138,0,0" VerticalAlignment="Top"/>
 
-        <Label Content="Telnet settings (requires additional launch option)" HorizontalAlignment="Left" Margin="10,170,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="White"/>
+        <!-- telnet is removed for now since it is not working in cs2 -->
+
+        <!-- <Label Content="Telnet settings (requires additional launch option)" HorizontalAlignment="Left" Margin="10,170,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="White"/>
         <GridSplitter HorizontalAlignment="Left" Height="1" Margin="10,193,0,0" VerticalAlignment="Top" Width="636" Background="Black"/>
 
         <Label Content="Send translations of:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,203,0,0" Foreground="White"/>
@@ -42,9 +44,12 @@
         <Label Content="Allow commands from:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,300,0,0" Foreground="White"/>
         <RadioButton x:Name="RbCommandsTeam" GroupName="CommandsFrom" Content="team-chat" HorizontalAlignment="Left" Margin="199,306,0,0" VerticalAlignment="Top" Foreground="White"/>
         <RadioButton x:Name="RbCommandsBoth" GroupName="CommandsFrom" Content="team-chat &amp; all-chat" HorizontalAlignment="Left" Margin="287,306,0,0" VerticalAlignment="Top" Foreground="White"/>
-        <RadioButton x:Name="RbCommandsSelf" GroupName="CommandsFrom" Content="self" HorizontalAlignment="Left" Margin="147,306,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <RadioButton x:Name="RbCommandsSelf" GroupName="CommandsFrom" Content="self" HorizontalAlignment="Left" Margin="147,306,0,0" VerticalAlignment="Top" Foreground="White"/> -->
 
-        <Button Content="Set default" HorizontalAlignment="Left" Margin="483,328,0,0" VerticalAlignment="Top" Width="75" Click="BtnSetDefault_Click"/>
-        <Button Content="Save" HorizontalAlignment="Left" Margin="571,328,0,0" VerticalAlignment="Top" Width="75" Click="BtnSaveOptions_Click"/>
+        <Button Content="Set default" HorizontalAlignment="Left" Margin="495,155,0,0" VerticalAlignment="Top" Width="75" Click="BtnSetDefault_Click"/>
+        <Button Content="Save" HorizontalAlignment="Left" Margin="575,155,0,0" VerticalAlignment="Top" Width="75" Click="BtnSaveOptions_Click"/>
+        
+        <!-- Content="Set default" HorizontalAlignment="Left" Margin="483,328,0,0" VerticalAlignment="Top" Width="75" -->
+        <!-- Content="Save" HorizontalAlignment="Left" Margin="571,328,0,0" VerticalAlignment="Top" Width="75" -->
     </Grid>
 </Window>

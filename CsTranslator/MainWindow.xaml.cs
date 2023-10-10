@@ -20,6 +20,7 @@ namespace CsTranslator
      * <summary>
      * Interaction logic for MainWindow.xaml
      * </summary>
+     * commented strings related to telnet
      */
     public partial class MainWindow
     {
@@ -72,7 +73,7 @@ namespace CsTranslator
             ChatView.Items.Refresh();
 
             /* Do not await because these functions have no return */
-            UpdateTelnetAsync();
+            //UpdateTelnetAsync();
             ExecuteCommandsAsync();
         }
 
@@ -86,6 +87,7 @@ namespace CsTranslator
             }
         }
 
+        /*
         private async Task UpdateTelnetAsync()
         {
             if (TelnetHelper.Connected)
@@ -102,7 +104,7 @@ namespace CsTranslator
                 LblTelnetStatus.Content = "Disabled";
             }
         }
-
+        */
         private void BtnOptions_Click(object sender, RoutedEventArgs e)
         {
             new OptionsWindow().ShowDialog();
