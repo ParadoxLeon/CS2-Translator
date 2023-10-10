@@ -5,12 +5,13 @@
 - ~~Dark Mode~~
 - ~~Remove or~~ reimplement telnet (if possible)
 - ~~Change the default location to fit CS2~~
-- Change the README to fit the "new" application
+- ~~Change the README to fit the "new" application~~
 - maybe change translation api to use DeepL instead of google
 - ~~Change some strings to fit CS2~~
 - maybe add language detection
 - ~~change namespace to CsTranslator~~
 - ~~remove every CS:GO reverence~~
+- remove the date and time stamps
 
 # CS2-Translator
 Easy to use, single-file CS2 chat translation tool. 
@@ -26,13 +27,13 @@ All of this is accomplished using official CS2 launch options.
 
 1. Download the [latest release](https://github.com/ParadoxLeon/CS2-Translator/releases) (or build it yourself)
 2. Set CS2 launch options: `-condebug` ([how do I do this?](https://support.steampowered.com/kb_article.php?ref=1040-JWMT-2947)) 
-3. start CS2 & CS2-Translator
+3. start CS2 & CS2-Translator (make sure to start the translator after CS since there is currently a bug)
 4. (Optional) Change the options in CS2Translator to your liking. ([List of language codes](https://cloud.google.com/translate/docs/languages))
 
 ## Features & Examples
 
 ### Translations
-![](img/translations-in-app.png)<br /><br />
+![](img/translation.png)<br /><br />
 
 ### Options
 ![](img/options.png)<br /><br />
@@ -42,7 +43,7 @@ All of this is accomplished using official CS2 launch options.
 * Lots of languages supported ([Full list of language codes](https://cloud.google.com/translate/docs/languages))
 * Translations are cached, so the same translation is used for identical messages.
 * Will work with all CS2 install locations.
-* Everything can be done from the game, no need to Alt + Tab.
+* Everything done from in the game, no need to Alt + Tab.
 
 ### Current limitations
 * The current method of using Google Translate is rate-limited at 100 requests / hour.
