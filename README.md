@@ -2,15 +2,15 @@
 
 # TODO
 
-~~ - Dark Mode ~~
+- ~~Dark Mode~~
 - Remove or reimplement telnet
-~~ - Change the default location to fit CS2 ~~
+- ~~Change the default location to fit CS2~~
 - Change the README to fit the "new" application
 - maybe change translation api to use DeepL instead of google
-~~ - Change some strings to fit CS2 ~~
+- ~~Change some strings to fit CS2~~
 - maybe add language detection
-~~ - change namespace to CsTranslator ~~
-~~ - remove every CS:GO reverence ~~
+- ~~change namespace to CsTranslator~~
+- ~~remove every CS:GO reverence~~
 
 # CS2-Translator
 Easy to use, single-file CS2 chat translation tool. 
