@@ -1,17 +1,4 @@
-# THIS IS A FORK (WIP)
-
-# TODO
-
-- ~~Dark Mode~~
-- ~~Remove or~~ reimplement telnet (if possible)
-- ~~Change the default location to fit CS2~~
-- ~~Change the README to fit the "new" application~~
-- maybe change translation api to use DeepL instead of google
-- ~~Change some strings to fit CS2~~
-- maybe add language detection
-- ~~change namespace to CsTranslator~~
-- ~~remove every CS:GO reverence~~
-- remove the date and time stamps
+# THIS IS A FORK
 
 # CS2-Translator
 Easy to use, single-file CS2 chat translation tool. 
@@ -48,3 +35,17 @@ All of this is accomplished using official CS2 launch options.
 ### Current limitations
 * The current method of using Google Translate is rate-limited at 100 requests / hour.
 * Can't detect messages on certain community servers because of different chat structures.
+
+# TODO
+
+- ~~Dark Mode~~
+- ~~Remove or~~ reimplement telnet (if possible)
+- ~~Change the default location to fit CS2~~
+- ~~Change the README to fit the "new" application~~
+- maybe change translation api to use DeepL instead of google
+- ~~Change some strings to fit CS2~~
+- maybe add language detection
+- ~~change namespace to CsTranslator~~
+- ~~remove every CS:GO reverence~~
+- remove the date and time stamps
+
