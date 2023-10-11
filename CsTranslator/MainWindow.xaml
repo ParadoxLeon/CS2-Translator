@@ -11,7 +11,7 @@
             <ColumnDefinition Width="123*"/>
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        <ListView x:Name="ChatView" HorizontalAlignment="Center" VerticalAlignment="Top" Height="357" Width="764" Grid.ColumnSpan="2" SelectionChanged="ChatView_SelectionChanged" Background="#FF2F2F2F" Foreground="White" >
+        <ListView x:Name="ChatView" HorizontalAlignment="Center" VerticalAlignment="Top" Height="357" Width="764" Grid.ColumnSpan="2" SelectionChanged="ChatView_SelectionChanged" Background="#FF2F2F2F" Foreground="White">
             <ListView.View>
                 <GridView>
                     <GridView.ColumnHeaderContainerStyle>
@@ -20,7 +20,13 @@
                         </Style>
                     </GridView.ColumnHeaderContainerStyle>
                     <GridViewColumn Header="Name" Width="200" DisplayMemberBinding="{Binding Name}" />
-                    <GridViewColumn Header="Translation" Width="550" DisplayMemberBinding="{Binding Translation.Message}" />
+                    <GridViewColumn Header="Translation" Width="550">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Translation.Message}" TextWrapping="Wrap" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>
