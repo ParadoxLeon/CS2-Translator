@@ -4,14 +4,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="CS Translator" Height="484.025" Width="761" ResizeMode="NoResize" Background="#FF2F2F2F" WindowStartupLocation="CenterScreen">
+        Title="CS Translator" Height="484" Width="778" ResizeMode="NoResize" Background="#FF2F2F2F" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="149*"/>
             <ColumnDefinition Width="123*"/>
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        <ListView x:Name="ChatView" HorizontalAlignment="Center" VerticalAlignment="Top" Height="357" Width="764" Grid.ColumnSpan="2" SelectionChanged="ChatView_SelectionChanged" Background="#FF2F2F2F" Foreground="White">
+        <ListView x:Name="ChatView" HorizontalAlignment="Left" VerticalAlignment="Top" Height="357" Width="762" Grid.ColumnSpan="3" SelectionChanged="ChatView_SelectionChanged" Background="#FF2F2F2F" Foreground="White">
             <ListView.View>
                 <GridView>
                     <GridView.ColumnHeaderContainerStyle>
