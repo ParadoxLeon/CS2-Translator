@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using CsTranslator.Enums;
 using CsTranslator.EventArgs;
@@ -227,11 +228,12 @@ namespace CsTranslator.Controllers
                 var namePart = temp[0].Trim();
                 var messagePart = temp[1].Trim();
 
+                // use regular expression to remove the date and time pattern
+                namePart = Regex.Replace(namePart, @"\d{1,2}/\d{1,2} \d{1,2}:\d{1,2}:\d{1,2}", "").Trim();
+
                 /* removal of *DEAD* chat prefix. needed in certain cases */
                 if (namePart.StartsWith("*DEAD*"))
                     namePart = namePart.Substring(6).Trim();
-
-                /* removal of time and date */
 
                 /* removal of team-chat and *DEAD* prefix */
                 if (namePart.StartsWith("*DEAD*(Counter-Terrorist)"))
