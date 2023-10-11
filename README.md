@@ -47,5 +47,5 @@ All of this is accomplished using official CS2 launch options.
 - maybe add language detection
 - ~~change namespace to CsTranslator~~
 - ~~remove every CS:GO reverence~~
-- remove the date and time stamps
+- ~~remove the date and time stamps~~
 
