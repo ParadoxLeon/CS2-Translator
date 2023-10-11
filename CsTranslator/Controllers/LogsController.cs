@@ -219,7 +219,7 @@ namespace CsTranslator.Controllers
             foreach (var l in lines)
             {
                 /* filter out a few edge cases */
-                if (!l.Contains(" : ") || l.Contains("  : ") || l.Contains("!.") || l.Contains("d :") || l.Contains("e :") || l.Trim().StartsWith("Duplicate :          "))
+                if (!l.Contains(" : ") || l.Contains("  : ") || l.Contains("!.") || l.Trim().StartsWith("Duplicate :          "))
                     continue;
                 
                 var temp = l.Split(new [] { " : " }, 2, StringSplitOptions.None);
@@ -244,7 +244,7 @@ namespace CsTranslator.Controllers
 
                 if (namePart.StartsWith("*DEAD*(Terrorist)"))
                 {
-                    namePart = namePart.Substring(27).Trim();
+                    namePart = namePart.Substring(17).Trim();
                     chatType = ChatType.Team;
                 }
 
