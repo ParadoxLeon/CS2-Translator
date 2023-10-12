@@ -1,7 +1,7 @@
 # THIS IS A FORK
 
 # CS2-Translator
-Easy to use, single-file CS2 chat translation tool. 
+Easy to use CS2 chat translation tool. 
 
 You probably know the feeling of not being able to communicate in a match because everyone speaks a different language.
 Well, gone are those days. With this tool you can read translations of all foreign language messages while staying in the game.
@@ -12,7 +12,7 @@ All of this is accomplished using official CS2 launch options.
 
 ## How to use
 
-1. Download the [latest release](https://github.com/ParadoxLeon/CS2-Translator/releases) (or build it yourself)
+1. Download the [latest Installer](https://github.com/ParadoxLeon/CS2-Translator/releases) (or build it yourself)
 2. Set CS2 launch options: `-condebug` ([how do I do this?](https://support.steampowered.com/kb_article.php?ref=1040-JWMT-2947)) 
 3. start CS2 & CS2-Translator
 4. (Optional) Change the options in CS2Translator to your liking. ([List of language codes](https://cloud.google.com/translate/docs/languages))
