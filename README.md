@@ -13,8 +13,8 @@ All of this is accomplished using official CS2 launch options.
 1. Download the [latest Installer](https://github.com/ParadoxLeon/CS2-Translator/releases) (or build it yourself)
 2. Run the Installer
 3. Set CS2 launch options: `-condebug` ([how do I do this?](https://support.steampowered.com/kb_article.php?ref=1040-JWMT-2947)) 
-4. start CS2 & CS2-Translator
-5. (Optional) Change the options in CS2Translator to your liking. ([List of language codes](https://cloud.google.com/translate/docs/languages))
+4. start CS2 & CS2 Translator
+5. (Optional) Change the options in CS2 Translator to your liking. ([List of language codes](https://cloud.google.com/translate/docs/languages))
 
 ## Features & Examples
 
