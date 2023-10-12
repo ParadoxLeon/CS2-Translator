@@ -32,6 +32,7 @@ namespace CsTranslator
         public MainWindow()
         {
             InitializeComponent();
+            CheckForUpdates();
 
             ErrorEncountered += OnErrorEncountered;
             Succeeded += OnSucceeded;
@@ -123,5 +124,30 @@ namespace CsTranslator
         
         }
 
+        private async void CheckForUpdates()
+        {
+            VersionChecker versionChecker = new VersionChecker();
+            bool isNewVersionAvailable = await versionChecker.CheckForUpdates();
+
+            if (isNewVersionAvailable)
+            {
+                // Display a notification to the user
+                updateNotification.Text = "A new version is available. Click here to update.";
+                updateNotification.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void UpdateNotification_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            string downloadLink = "https://github.com/ParadoxLeon/CS2-Translator/releases";
+            try
+            {
+                Process.Start(new ProcessStartInfo(downloadLink) { UseShellExecute = true });
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error opening the download link: " + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
     }
 }

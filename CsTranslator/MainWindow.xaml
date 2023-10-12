@@ -36,5 +36,9 @@
             <Label x:Name="LblTelnetStatus" Grid.Column="0" Content="" HorizontalAlignment="Left" Margin="77,362,0,0" VerticalAlignment="Top" FontSize="20" Foreground="White"/>
         -->
         <Label x:Name="LblError" Grid.Column="1" HorizontalAlignment="Left" Margin="0,361,0,0" VerticalAlignment="Top" FontSize="20" Content="" Foreground="#FFB03131"/>
+        <TextBlock x:Name="updateNotification" Text="A new version is available! Click here to update." 
+                   Visibility="Collapsed" Foreground="Red" FontSize="16"
+                   HorizontalAlignment="Left" VerticalAlignment="Top"
+                   MouseLeftButtonUp="UpdateNotification_MouseLeftButtonUp" Grid.ColumnSpan="2" Margin="222,405,0,0"/>
     </Grid>
 </Window>
