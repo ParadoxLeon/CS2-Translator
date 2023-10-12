@@ -20,7 +20,7 @@
                         </Style>
                     </GridView.ColumnHeaderContainerStyle>
                     <GridViewColumn Header="Name" Width="200" DisplayMemberBinding="{Binding Name}" />
-                    <GridViewColumn Header="Translation" Width="558">
+                    <GridViewColumn Header="Translation" Width="557">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding Translation.Message}" TextWrapping="Wrap" />

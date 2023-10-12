@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 using CsTranslator.Enums;
 using CsTranslator.EventArgs;
@@ -168,34 +169,67 @@ namespace CsTranslator.Controllers
          */
         private static List<string> GetLastLines(int amount)
         {
-            /* Return null if the file does not exist. */
-            if (!File.Exists($@"{Properties.Settings.Default.Path}\game\csgo\console.log"))
-                throw new LogfileNotFoundException();
-            
-            var count = 0;
-            var buffer = new byte[1];
-            var consoleLines = new List<string>();
+            string logFilePath = $@"{Properties.Settings.Default.Path}\game\csgo\console.log";
+            List<string> consoleLines = new List<string>();
 
-            using var fs = new FileStream($@"{Properties.Settings.Default.Path}\game\csgo\console.log", FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
-            fs.Seek(0, SeekOrigin.End);
+            // Define the maximum number of retries
+            int maxRetries = 3;
 
-            while (count < amount)
+            for (int retry = 0; retry < maxRetries; retry++)
             {
-                fs.Seek(-1, SeekOrigin.Current);
-                fs.Read(buffer, 0, 1);
-                if (buffer[0] == '\n') count++;
+                try
+                {
+                    using (var fs = new FileStream(logFilePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+                    {
+                        if (fs.Length == 0)
+                        {
+                            // File is empty, return an empty list
+                            return consoleLines;
+                        }
 
-                /* fs.Read(...) advances the position, so we need to go back again */
-                fs.Seek(-1, SeekOrigin.Current); 
-            }
-            /* go past the last '\n' */
-            fs.Seek(1, SeekOrigin.Current);
+                        var count = 0;
+                        var buffer = new byte[1];
 
-            using var sr = new StreamReader(fs);
-            string line;
-            while ((line = sr.ReadLine()) != null)
-            {
-                consoleLines.Add(line);
+                        fs.Seek(0, SeekOrigin.End);
+
+                        while (count < amount)
+                        {
+                            fs.Seek(-1, SeekOrigin.Current);
+                            fs.Read(buffer, 0, 1);
+                            if (buffer[0] == '\n') count++;
+
+                            // fs.Read() advances the position, so we need to go back again
+                            fs.Seek(-1, SeekOrigin.Current);
+                        }
+
+                        // Go past the last '\n'
+                        fs.Seek(1, SeekOrigin.Current);
+
+                        using (var sr = new StreamReader(fs))
+                        {
+                            string line;
+                            while ((line = sr.ReadLine()) != null)
+                            {
+                                consoleLines.Add(line);
+                            }
+                        }
+
+                        return consoleLines;
+                    }
+                }
+                catch (IOException ex)
+                {
+                    if (retry < maxRetries - 1)
+                    {
+                        // Wait for a short time before retrying (adjust the sleep duration as needed)
+                        Thread.Sleep(1000);
+                    }
+                    else
+                    {
+                        // Handle the exception after exhausting retries
+                        Console.WriteLine($"Error reading the file: {ex.Message}");
+                    }
+                }
             }
 
             return consoleLines;
