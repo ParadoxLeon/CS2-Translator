@@ -1,5 +1,3 @@
-# THIS IS A FORK
-
 # CS2-Translator
 Easy to use CS2 chat translation tool. 
 
@@ -13,9 +11,10 @@ All of this is accomplished using official CS2 launch options.
 ## How to use
 
 1. Download the [latest Installer](https://github.com/ParadoxLeon/CS2-Translator/releases) (or build it yourself)
-2. Set CS2 launch options: `-condebug` ([how do I do this?](https://support.steampowered.com/kb_article.php?ref=1040-JWMT-2947)) 
-3. start CS2 & CS2-Translator
-4. (Optional) Change the options in CS2Translator to your liking. ([List of language codes](https://cloud.google.com/translate/docs/languages))
+2. Run the Installer
+3. Set CS2 launch options: `-condebug` ([how do I do this?](https://support.steampowered.com/kb_article.php?ref=1040-JWMT-2947)) 
+4. start CS2 & CS2-Translator
+5. (Optional) Change the options in CS2Translator to your liking. ([List of language codes](https://cloud.google.com/translate/docs/languages))
 
 ## Features & Examples
 
@@ -31,21 +30,15 @@ All of this is accomplished using official CS2 launch options.
 * Translations are cached, so the same translation is used for identical messages.
 * Will work with all CS2 install locations.
 * Everything done from in the game, no need to Alt + Tab.
+* New version notification
 
 ### Current limitations
 * The current method of using Google Translate is rate-limited at 100 requests / hour.
 * Can't detect messages on certain community servers because of different chat structures.
 
-# TODO
-
-- ~~Dark Mode~~
-- ~~Remove or~~ reimplement telnet (if possible)
-- ~~Change the default location to fit CS2~~
-- ~~Change the README to fit the "new" application~~
-- maybe change translation api to use DeepL instead of google
-- ~~Change some strings to fit CS2~~
-- maybe add language detection
-- ~~change namespace to CsTranslator~~
-- ~~remove every CS:GO reverence~~
-- ~~remove the date and time stamps~~
-
+### What I changed:
+- switched to Dark Mode
+- removed options for telnet
+- changed the default location
+- (sadly) added a Installer
+- added Text wrapping
