@@ -22,7 +22,7 @@ namespace CsTranslator.Helpers
         public static Translation GetTranslation(string sourceText, string lang = null)
         {
             lang ??= Properties.Settings.Default.Lang;
-            
+
             if (CachedTranslations.ContainsKey(sourceText + lang))
                 return CachedTranslations[sourceText + lang];
 
@@ -35,15 +35,15 @@ namespace CsTranslator.Helpers
             }
             catch (TranslatorException e)
             {
-                translation = new Translation(lang);    
+                translation = new Translation(lang);
                 MainWindow.ErrorEncountered(null, new TranslatorExceptionEventArgs { Exception = e });
             }
 
             CachedTranslations[sourceText + lang] = translation;
-            
+
             return translation;
         }
-        
+
         private static Translation Translate(string sourceText, string lang)
         {
             var url = $"https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl={lang}&dt=t&q={HttpUtility.UrlEncode(sourceText)}";
@@ -60,12 +60,12 @@ namespace CsTranslator.Helpers
                 var message = File.ReadAllText(outputFile).Substring(4).Split('"')[0];
                 return new Translation(lang, message);
             }
-            catch(WebException e)
+            catch (WebException e)
             {
-                if(e.Message.StartsWith("The remote name could not be resolved: "))
+                if (e.Message.StartsWith("The remote name could not be resolved: "))
                     throw new NoInternetException();
-                
-                if(e.Message == "The remote server returned an error: (429) Too Many Requests.")
+
+                if (e.Message == "The remote server returned an error: (429) Too Many Requests.")
                     throw new GoogleTranslateTimeoutException();
 
                 throw;
