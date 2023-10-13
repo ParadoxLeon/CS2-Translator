@@ -16,6 +16,10 @@ All of this is accomplished using official CS2 launch options.
 4. start CS2 & CS2 Translator
 5. (Optional) Change the options in CS2 Translator to your liking. ([List of language codes](https://cloud.google.com/translate/docs/languages))
 
+## Update
+
+To update the translator just download the [latest Installer](https://github.com/ParadoxLeon/CS2-Translator/releases) (or build it yourself) and run it 
+
 ## Features & Examples
 
 ### Translations
