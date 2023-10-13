@@ -32,8 +32,8 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "E:\installer\cs-translator\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
-Source: "E:\installer\cs-translator\Octokit.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "E:\Source\Repos\CS2-Translator\CsTranslator\bin\Release\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
+Source: "E:\Source\Repos\CS2-Translator\CsTranslator\bin\Release\Octokit.dll"; DestDir: "{app}"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
