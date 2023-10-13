@@ -134,6 +134,7 @@ namespace CsTranslator
                 // Display a notification to the user
                 updateNotification.Text = "A new version is available. Click here to update.";
                 updateNotification.Visibility = Visibility.Visible;
+                dismissUpdate.Visibility = Visibility.Visible;
             }
         }
 
@@ -148,6 +149,12 @@ namespace CsTranslator
             {
                 MessageBox.Show("Error opening the download link: " + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
+
+        private void dismissUpdate_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            updateNotification.Visibility = Visibility.Collapsed;
+            dismissUpdate.Visibility = Visibility.Collapsed;
         }
     }
 }

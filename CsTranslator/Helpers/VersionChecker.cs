@@ -3,7 +3,7 @@ using Octokit;
 
 public static class Version
 {
-    public const string CurrentVersion = "1.2.2";
+    public const string CurrentVersion = "1.2.3";
 }
 public class VersionChecker
 {

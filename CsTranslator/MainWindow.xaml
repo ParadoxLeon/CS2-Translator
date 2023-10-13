@@ -40,5 +40,10 @@
                    Visibility="Collapsed" Foreground="Red" FontSize="16"
                    HorizontalAlignment="Left" VerticalAlignment="Top"
                    MouseLeftButtonUp="UpdateNotification_MouseLeftButtonUp" Grid.ColumnSpan="2" Margin="222,405,0,0"/>
+        <TextBlock x:Name="dismissUpdate" Text="x"
+           Visibility="Collapsed" Foreground="Red" FontSize="20"
+           HorizontalAlignment="Left" VerticalAlignment="Top"
+           MouseLeftButtonUp="dismissUpdate_MouseLeftButtonUp" Margin="145,387,0,0" Grid.Column="1" ToolTip="Dismiss Update"/>
+
     </Grid>
 </Window>
