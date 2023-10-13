@@ -24,6 +24,8 @@
 
         <Label Content="Ignore own messages:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,132,0,0" Foreground="White"/>
         <CheckBox x:Name="CbIgnoreOwnMessages" HorizontalAlignment="Left" Margin="143,138,0,0" VerticalAlignment="Top"/>
+        <TextBlock Text="Version:" Margin="294,155,311,10" Foreground="White" />
+        <TextBlock  Text="{Binding CurrentVersion}" Margin="338,155,275,10" Foreground="White" />
 
         <!-- telnet is removed for now since it is not working in cs2 -->
 

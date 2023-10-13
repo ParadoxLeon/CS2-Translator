@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Text.RegularExpressions;
 using System.Windows;
@@ -17,7 +18,7 @@ namespace CsTranslator
      * </summary>
      * commented strings related to telnet
      */
-    public partial class OptionsWindow 
+    public partial class OptionsWindow
     {
         /* telnet is removed for now since it is not working in cs2
         private ChatType TransToRadioButtons
@@ -104,6 +105,12 @@ namespace CsTranslator
             }
         }
         */
+
+        public string CurrentVersion
+        {
+            get { return Version.CurrentVersion; }
+        }
+
         private bool IgnoreOwnMessages
         {
             get => CbIgnoreOwnMessages.IsChecked != null && (bool) CbIgnoreOwnMessages.IsChecked;
@@ -137,6 +144,7 @@ namespace CsTranslator
         {
             InitializeComponent();
             LoadOptions();
+            DataContext = this;
         }
 
         private void LoadOptions()
@@ -201,7 +209,6 @@ namespace CsTranslator
             Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
             e.Handled = true;
         }
-
 
     }
 }
