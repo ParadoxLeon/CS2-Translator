@@ -46,3 +46,6 @@ To update the translator just download the [latest Installer](https://github.com
 - changed the default location
 - (sadly) added a Installer
 - added Text wrapping
+
+### What's on my todo:
+- language detection (to see the language code of the translated text)
