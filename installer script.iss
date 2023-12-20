@@ -21,7 +21,7 @@ AppUpdatesURL={#MyAppURL}
 DefaultDirName=C:\Program Files (x86)\{#MyAppName}
 DisableProgramGroupPage=yes
 OutputBaseFilename=CS-Translator-Installer
-Compression=lzma
+Compression=zip
 SolidCompression=yes
 WizardStyle=modern
 
