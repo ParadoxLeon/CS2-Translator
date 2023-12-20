@@ -164,7 +164,7 @@ namespace CsTranslator.Controllers
             }
         }
 
-        /**
+        /*
          * Reads the last <param name="amount"></param> lines from the console.log file.
          */
         private static List<string> GetLastLines(int amount)
@@ -235,7 +235,7 @@ namespace CsTranslator.Controllers
             return consoleLines;
         }
 
-        /**
+        /*
          * <summary>
          * Helper function for LoadLogs
          * function that checks takes a list with console.log lines and attempts to find chat messages in them.
@@ -252,11 +252,11 @@ namespace CsTranslator.Controllers
 
             foreach (var l in lines)
             {
-                /* filter out a few edge cases */
-                if (!l.Contains(" : ") || l.Contains("  : ") || l.Contains("!.") || l.Trim().StartsWith("Duplicate :          "))
+                /* filter out the massage */
+                if (!l.Contains("[ALL]") && !l.Contains("﹫"))
                     continue;
-                
-                var temp = l.Split(new [] { " : " }, 2, StringSplitOptions.None);
+
+                var temp = l.Split(new[] { ": " }, 2, StringSplitOptions.None);
 
                 var chatType = ChatType.All;
                 var namePart = temp[0].Trim();
@@ -264,6 +264,10 @@ namespace CsTranslator.Controllers
 
                 // use regular expression to remove the date and time pattern
                 namePart = Regex.Replace(namePart, @"\d{1,2}/\d{1,2} \d{1,2}:\d{1,2}:\d{1,2}", "").Trim();
+
+                //Comment when testing
+                if (namePart.StartsWith("[ALL]"))
+                    namePart = namePart.Substring(5).Trim();
 
                 /* removal of *DEAD* chat prefix. needed in certain cases */
                 if (namePart.StartsWith("*DEAD*"))
@@ -296,13 +300,14 @@ namespace CsTranslator.Controllers
                 }
 
                 /* removal of the team-chat location info. */
-                if (chatType == ChatType.Team)
-                {
-                    var idx = namePart.LastIndexOf('@');
+                var idx = namePart.LastIndexOf('﹫');
 
-                    if (idx != -1)
-                        namePart = namePart.Substring(0, idx).Trim();
+                if (idx != -1)
+                {
+                    namePart = namePart.Substring(0, idx).Trim();
                 }
+
+                
 
                 /* removing the ? after the username that is there for unknown reasons. */
                 namePart = namePart.Remove(namePart.Length - 1);
