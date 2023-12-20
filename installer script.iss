@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "CS-Translator"
-#define MyAppVersion "1.2.3"
+#define MyAppVersion "1.2.4"
 #define MyAppPublisher "paradoxleon"
 #define MyAppURL "https://github.com/ParadoxLeon/CS2-Translator"
 #define MyAppExeName "CsTranslator.exe"
