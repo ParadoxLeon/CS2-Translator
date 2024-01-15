@@ -269,9 +269,10 @@ namespace CsTranslator.Controllers
                 if (namePart.StartsWith("[ALL]"))
                     namePart = namePart.Substring(5).Trim();
 
-                /* removal of *DEAD* chat prefix. needed in certain cases */
-                if (namePart.StartsWith("*DEAD*"))
-                    namePart = namePart.Substring(6).Trim();
+
+                /* removal of [DEAD] */
+                if (namePart.EndsWith("[DEAD]"))
+                    namePart = namePart.Substring(0, namePart.Length - 6).Trim();
 
                 /* removal of team-chat and *DEAD* prefix */
                 if (namePart.StartsWith("*DEAD*(Counter-Terrorist)"))
