@@ -39,7 +39,6 @@ namespace CsTranslator
 
             LogsController.Logs = new LinkedList<Log>();
             LogsController.Chats = new List<Chat>();
-            LogsController.Commands = new List<Command>();
 
             Loaded += LoadWindow;
         }
@@ -72,40 +71,8 @@ namespace CsTranslator
         {
             await LogsController.LoadLogsAsync(30);
             ChatView.Items.Refresh();
-
-            /* Do not await because these functions have no return */
-            //UpdateTelnetAsync();
-            ExecuteCommandsAsync();
         }
 
-        private static async Task ExecuteCommandsAsync()
-        {
-            /* await each task because otherwise the order of responses might be incorrect */
-            foreach (var command in LogsController.Commands.Where(command => !command.Executed))
-            {
-                await Task.Run(() => command.Execute());
-                command.Executed = true;
-            }
-        }
-
-        /*
-        private async Task UpdateTelnetAsync()
-        {
-            if (TelnetHelper.Connected)
-            {
-                LblTelnetStatus.Content = "Connected";
-            }
-            else if(OptionsManager.SendTranslationsFrom != TelnetGrant.Undefined)
-            {
-                LblTelnetStatus.Content = "Disconnected";
-                await Task.Run(() => TelnetHelper.Connect());
-            }
-            else
-            {
-                LblTelnetStatus.Content = "Disabled";
-            }
-        }
-        */
         private void BtnOptions_Click(object sender, RoutedEventArgs e)
         {
             new OptionsWindow().ShowDialog();

@@ -110,7 +110,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Controllers\CommandsController.cs" />
     <Compile Include="Enums\ChatType.cs" />
     <Compile Include="Enums\TelnetGrant.cs" />
     <Compile Include="EventArgs\TranslatorExceptionEventArgs.cs" />

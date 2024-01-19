@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 using CsTranslator.Enums;
 using CsTranslator.EventArgs;
 using CsTranslator.Exceptions;
-using CsTranslator.Helpers;
 using CsTranslator.Models;
 
 namespace CsTranslator.Controllers
@@ -16,7 +15,6 @@ namespace CsTranslator.Controllers
     {
         public static LinkedList<Log> Logs { get; set; }
         public static List<Chat> Chats { get; set; }
-        public static List<Command> Commands { get; set; }
 
         public static async Task LoadLogsAsync(int amount)
         {
@@ -50,16 +48,8 @@ namespace CsTranslator.Controllers
                 var (rawStrings, chatTypes, names, rawMessage) = LineCleaner(lines);
 
                 for (var i = 0; i < rawStrings.Count; i++)
-                {
-                    if (rawMessage[i][0] == '!')
-                    {
-                        var possCommand = CommandsController.BuildCommand(rawStrings[i], chatTypes[i], names[i], rawMessage[i]);
-                        if(possCommand != null) logs.AddLast(possCommand);
-                    }
-                    else
-                    {
+                {  
                         logs.AddLast(new Chat(rawStrings[i], chatTypes[i], names[i], rawMessage[i]));
-                    }
                 }
 
                 /* if logs where found in the file. */
@@ -101,42 +91,11 @@ namespace CsTranslator.Controllers
                 switch (log)
                 {
                     case Chat chat:
-                        if (OptionsManager.IgnoreOwnMessages && chat.Name == OptionsManager.OwnUsername) return;
 
                         Chats.Insert(0, chat);
 
-                        if (chat.Translation.Message == chat.Message || chat.Translation.Message == "---") return;
-
-                        /* Send translation in chat over telnet if options allow it. */                        
-                        switch (OptionsManager.SendTranslationsFrom)
-                        {
-                            case TelnetGrant.AllChat:
-                                if (chat.ChatType == ChatType.Team) return;
-                                break;
-                            case TelnetGrant.TeamChat:
-                                if (chat.ChatType == ChatType.All) return;
-                                break;
-                        }
+                        if (chat.Translation.Message == chat.Message || chat.Translation.Message == "---") return;                        
                         
-                        TelnetHelper.SendChatTranslation(OptionsManager.SendTranslationsTo, chat);
-                        
-                        break;
-                    case Command command:
-                        
-                        /* Check options is command is allowed */
-                        switch (OptionsManager.AllowCommandsFrom)
-                        {
-                            case TelnetGrant.Self:
-                                if (command.Name != OptionsManager.OwnUsername) return;
-                                break;
-                            case TelnetGrant.TeamChat:
-                                if (command.ChatType == ChatType.All) return;
-                                break;
-                            default:
-                                return;
-                        }
-                        
-                        Commands.Insert(0, command);
                         break;
                 }
             }
@@ -273,43 +232,7 @@ namespace CsTranslator.Controllers
                 /* removal of [DEAD] */
                 if (namePart.EndsWith("[DEAD]"))
                     namePart = namePart.Substring(0, namePart.Length - 6).Trim();
-
-                /* removal of team-chat and *DEAD* prefix */
-                if (namePart.StartsWith("*DEAD*(Counter-Terrorist)"))
-                {
-                    namePart = namePart.Substring(25).Trim();
-                    chatType = ChatType.Team;
-                }
-
-                if (namePart.StartsWith("*DEAD*(Terrorist)"))
-                {
-                    namePart = namePart.Substring(17).Trim();
-                    chatType = ChatType.Team;
-                }
-
-                /* removal of team-chat prefix. */
-                if (namePart.StartsWith("(Counter-Terrorist)"))
-                {
-                    namePart = namePart.Substring(19).Trim();
-                    chatType = ChatType.Team;
-                }
-
-                if (namePart.StartsWith("(Terrorist)"))
-                {
-                    namePart = namePart.Substring(11).Trim();
-                    chatType = ChatType.Team;
-                }
-
-                /* removal of the team-chat location info. */
-                var idx = namePart.LastIndexOf('﹫');
-
-                if (idx != -1)
-                {
-                    namePart = namePart.Substring(0, idx).Trim();
-                }
-
-                
-
+              
                 /* removing the ? after the username that is there for unknown reasons. */
                 namePart = namePart.Remove(namePart.Length - 1);
 

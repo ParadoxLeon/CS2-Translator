@@ -27,27 +27,6 @@
         <TextBlock Text="Version:" Margin="294,155,311,10" Foreground="White" />
         <TextBlock  Text="{Binding CurrentVersion}" Margin="338,155,275,10" Foreground="White" />
 
-        <!-- telnet is removed for now since it is not working in cs2 -->
-
-        <!-- <Label Content="Telnet settings (requires additional launch option)" HorizontalAlignment="Left" Margin="10,170,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="White"/>
-        <GridSplitter HorizontalAlignment="Left" Height="1" Margin="10,193,0,0" VerticalAlignment="Top" Width="636" Background="Black"/>
-
-        <Label Content="Send translations of:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,203,0,0" Foreground="White"/>
-        <CheckBox x:Name="CbTransFromAll" Content="all-chat" HorizontalAlignment="Left" Margin="143,211,0,0" VerticalAlignment="Top" Foreground="White"/>
-        <CheckBox x:Name="CbTransFromTeam" Content="team-chat" HorizontalAlignment="Left" Margin="215,211,0,0" VerticalAlignment="Top" Foreground="White"/>
-
-        <Label Content="Send translations to:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,235,0,0" Foreground="White"/>
-        <RadioButton x:Name="RbTransToAll" GroupName="TransTo" Content="all-chat" HorizontalAlignment="Left" Margin="143,242,0,0" VerticalAlignment="Top" Foreground="White"/>
-        <RadioButton x:Name="RbTransToTeam" GroupName="TransTo" Content="team-chat" HorizontalAlignment="Left" Margin="215,242,0,0" VerticalAlignment="Top" Foreground="White"/>
-
-        <Label Content="Telnet port:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,268,0,0" Foreground="White"/>
-        <TextBox x:Name="TbTelnetPort" PreviewTextInput="TbTelnetPort_OnPreviewTextInput" HorizontalAlignment="Left" Height="23" Margin="104,272,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="542"/>
-
-        <Label Content="Allow commands from:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,300,0,0" Foreground="White"/>
-        <RadioButton x:Name="RbCommandsTeam" GroupName="CommandsFrom" Content="team-chat" HorizontalAlignment="Left" Margin="199,306,0,0" VerticalAlignment="Top" Foreground="White"/>
-        <RadioButton x:Name="RbCommandsBoth" GroupName="CommandsFrom" Content="team-chat &amp; all-chat" HorizontalAlignment="Left" Margin="287,306,0,0" VerticalAlignment="Top" Foreground="White"/>
-        <RadioButton x:Name="RbCommandsSelf" GroupName="CommandsFrom" Content="self" HorizontalAlignment="Left" Margin="147,306,0,0" VerticalAlignment="Top" Foreground="White"/> -->
-
         <Button Content="Set default" HorizontalAlignment="Left" Margin="495,155,0,0" VerticalAlignment="Top" Width="75" Click="BtnSetDefault_Click"/>
         <Button Content="Save" HorizontalAlignment="Left" Margin="575,155,0,0" VerticalAlignment="Top" Width="75" Click="BtnSaveOptions_Click"/>
         
