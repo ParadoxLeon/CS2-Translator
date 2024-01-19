@@ -16,10 +16,6 @@ namespace CsTranslator.Models
         public override void Execute()
         {
             Translation = Translator.GetTranslation(Message, LangParam);
-            
-            if(Translation.Message != Message && Translation.Message != "")
-                TelnetHelper.SendInChat(ExportChatType, Translation.Message);
-
             Executed = true;
         }
     }

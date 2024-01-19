@@ -111,18 +111,13 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Enums\ChatType.cs" />
-    <Compile Include="Enums\TelnetGrant.cs" />
     <Compile Include="EventArgs\TranslatorExceptionEventArgs.cs" />
     <Compile Include="Exceptions\GoogleTranslateTimeoutException.cs" />
     <Compile Include="Exceptions\LogfileNotFoundException.cs" />
     <Compile Include="Exceptions\NoInternetException.cs" />
     <Compile Include="Exceptions\TranslatorException.cs" />
     <Compile Include="Helpers\OptionsManager.cs" />
-    <Compile Include="Helpers\TelnetHelper.cs" />
     <Compile Include="Helpers\VersionChecker.cs" />
-    <Compile Include="MinimalisticTelnet\Options.cs" />
-    <Compile Include="MinimalisticTelnet\TelnetConnection.cs" />
-    <Compile Include="MinimalisticTelnet\Verbs.cs" />
     <Compile Include="Models\Command.cs" />
     <Compile Include="Models\Log.cs" />
     <Compile Include="Models\TransCommand.cs" />

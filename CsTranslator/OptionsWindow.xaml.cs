@@ -1,14 +1,10 @@
-﻿using System;
-using System.ComponentModel;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Navigation;
-using CsTranslator.Enums;
 using CsTranslator.Helpers;
-using CsTranslator.MinimalisticTelnet;
 
 namespace CsTranslator
 {
@@ -20,92 +16,7 @@ namespace CsTranslator
      */
     public partial class OptionsWindow
     {
-        /* telnet is removed for now since it is not working in cs2
-        private ChatType TransToRadioButtons
-        {
-            get => RbTransToAll.IsChecked != null && (bool) (RbTransToAll.IsChecked) ? ChatType.All : ChatType.Team;
-            set
-            {
-                if (value == ChatType.Team)
-                {
-                    RbTransToTeam.IsChecked = true;    
-                }
-                else
-                {
-                    RbTransToAll.IsChecked = true;
-                }
-            }
-        }
-        
-        private TelnetGrant CommandsFromRadioButtons
-        {
-            get
-            {
-                if (RbCommandsBoth.IsChecked != null && (bool) RbCommandsBoth.IsChecked)
-                    return TelnetGrant.BothChats;
-                
-                if(RbCommandsTeam.IsChecked != null && (bool) RbCommandsTeam.IsChecked)
-                    return TelnetGrant.TeamChat;
-                
-                return TelnetGrant.Self;
-            }
-            set
-            {
-                switch (value)
-                {
-                    case TelnetGrant.BothChats:
-                        RbCommandsBoth.IsChecked = true;
-                        break;
-                    case TelnetGrant.TeamChat:
-                        RbCommandsTeam.IsChecked = true;
-                        break;
-                    default:
-                        RbCommandsSelf.IsChecked = true;
-                        break;
-                }
-            }
-        }
-
-        
-         private TelnetGrant TransFromCheckBoxes
-        {
-            get
-            {
-                var returnValue = TelnetGrant.Undefined;
-
-                if (CbTransFromAll.IsChecked != null && (bool) CbTransFromAll.IsChecked)
-                    returnValue = TelnetGrant.AllChat;
-
-                if (CbTransFromTeam.IsChecked != null && (bool) CbTransFromTeam.IsChecked)
-                    return returnValue == TelnetGrant.Undefined ? TelnetGrant.TeamChat : TelnetGrant.BothChats;
-
-                return returnValue;
-            }
-            set
-            {
-                switch (value)
-                {
-                    case TelnetGrant.BothChats:
-                        CbTransFromAll.IsChecked = true;
-                        CbTransFromTeam.IsChecked = true;
-                        break;
-                    case TelnetGrant.TeamChat:
-                        CbTransFromTeam.IsChecked = true;
-                        CbTransFromAll.IsChecked = false;
-                        break;
-                    case TelnetGrant.AllChat:
-                        CbTransFromTeam.IsChecked = false;
-                        CbTransFromAll.IsChecked = true;
-                        break;
-                    default:
-                        CbTransFromAll.IsChecked = false;
-                        CbTransFromTeam.IsChecked = false;
-                        break;
-                }
-            }
-        }
-        */
-
+    
         public string CurrentVersion
         {
             get { return Version.CurrentVersion; }
@@ -126,16 +37,11 @@ namespace CsTranslator
                 if (!string.IsNullOrEmpty(value))
                 {
                     CbIgnoreOwnMessages.IsEnabled = true;
-                    //RbCommandsSelf.IsEnabled = true;
                 }
                 else
                 {
                     CbIgnoreOwnMessages.IsEnabled = false;
                     CbIgnoreOwnMessages.IsChecked = false;
-                    //RbCommandsSelf.IsEnabled = false;
-                    
-                    //if (RbCommandsSelf.IsChecked != null && (bool) RbCommandsSelf.IsChecked)
-                    //    RbCommandsTeam.IsChecked = true;
                 }
             }
         }
@@ -152,10 +58,6 @@ namespace CsTranslator
             TbFolderPath.Text = OptionsManager.InstallationPath;
             TbLang.Text = OptionsManager.Language;
             OwnUsername = OptionsManager.OwnUsername;
-            //TbTelnetPort.Text = OptionsManager.TelnetPort.ToString();
-            //TransToRadioButtons = OptionsManager.SendTranslationsTo;
-            //CommandsFromRadioButtons = OptionsManager.AllowCommandsFrom;
-            //TransFromCheckBoxes = OptionsManager.SendTranslationsFrom;
             IgnoreOwnMessages = OptionsManager.IgnoreOwnMessages;
         }
 
@@ -164,10 +66,6 @@ namespace CsTranslator
             OptionsManager.InstallationPath = TbFolderPath.Text;
             OptionsManager.Language = TbLang.Text;
             OptionsManager.OwnUsername = OwnUsername;
-            //OptionsManager.TelnetPort = int.Parse(TbTelnetPort.Text);
-            //OptionsManager.SendTranslationsTo = TransToRadioButtons;
-            //OptionsManager.AllowCommandsFrom = CommandsFromRadioButtons;
-            //OptionsManager.SendTranslationsFrom = TransFromCheckBoxes;
             OptionsManager.IgnoreOwnMessages = IgnoreOwnMessages; 
             
             OptionsManager.Save();
@@ -191,16 +89,11 @@ namespace CsTranslator
             if (((TextBox) sender).Text.Length > 0)
             {
                 CbIgnoreOwnMessages.IsEnabled = true;
-                //RbCommandsSelf.IsEnabled = true;
             }
             else
             {
                 CbIgnoreOwnMessages.IsEnabled = false;
                 CbIgnoreOwnMessages.IsChecked = false;
-                //RbCommandsSelf.IsEnabled = false;
-                
-                //if (RbCommandsSelf.IsChecked != null && (bool) RbCommandsSelf.IsChecked)
-                //    RbCommandsTeam.IsChecked = true;
             }
         }
 
