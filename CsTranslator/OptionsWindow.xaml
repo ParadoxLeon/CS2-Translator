@@ -18,8 +18,8 @@
                 <InlineUIContainer />
             </Hyperlink>
         </TextBlock>
-
-        <TextBlock Text="Version:" Margin="294,155,311,10" Foreground="White" />
+        
+         <TextBlock Text="Version:" Margin="294,155,311,10" Foreground="White" />
         <TextBlock  Text="{Binding CurrentVersion}" Margin="338,155,275,10" Foreground="White" />
 
         <Button Content="Set default" HorizontalAlignment="Left" Margin="495,155,0,0" VerticalAlignment="Top" Width="75" Click="BtnSetDefault_Click"/>
