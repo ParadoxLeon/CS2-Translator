@@ -18,19 +18,12 @@
                 <InlineUIContainer />
             </Hyperlink>
         </TextBlock>
-        <Label Content="Own username:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,81,0,0" Foreground="White"/>
-        <TextBox x:Name="TbOwnUsername" TextChanged="TbOwnUsername_TextChanged" HorizontalAlignment="Left" Height="23" Margin="104,85,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="542"/>
-        <Label Content="Required for ignoring own messages" HorizontalAlignment="Left" Margin="102,102,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="10" Foreground="White"/>
 
-        <Label Content="Ignore own messages:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,132,0,0" Foreground="White"/>
-        <CheckBox x:Name="CbIgnoreOwnMessages" HorizontalAlignment="Left" Margin="143,138,0,0" VerticalAlignment="Top"/>
         <TextBlock Text="Version:" Margin="294,155,311,10" Foreground="White" />
         <TextBlock  Text="{Binding CurrentVersion}" Margin="338,155,275,10" Foreground="White" />
 
         <Button Content="Set default" HorizontalAlignment="Left" Margin="495,155,0,0" VerticalAlignment="Top" Width="75" Click="BtnSetDefault_Click"/>
         <Button Content="Save" HorizontalAlignment="Left" Margin="575,155,0,0" VerticalAlignment="Top" Width="75" Click="BtnSaveOptions_Click"/>
         
-        <!-- Content="Set default" HorizontalAlignment="Left" Margin="483,328,0,0" VerticalAlignment="Top" Width="75" -->
-        <!-- Content="Save" HorizontalAlignment="Left" Margin="571,328,0,0" VerticalAlignment="Top" Width="75" -->
     </Grid>
 </Window>

@@ -16,12 +16,6 @@ using CsTranslator.Models;
 
 namespace CsTranslator
 {
-    /**
-     * <summary>
-     * Interaction logic for MainWindow.xaml
-     * </summary>
-     * commented strings related to telnet
-     */
     public partial class MainWindow
     {
         private readonly DispatcherTimer _checkTimer = new DispatcherTimer();

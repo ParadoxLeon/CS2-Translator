@@ -14,16 +14,6 @@ namespace CsTranslator.Helpers
             get => Properties.Settings.Default.Lang;
             set => Properties.Settings.Default.Lang = value;
         }
-        public static string OwnUsername
-        {
-            get => Properties.Settings.Default.OwnUsername;
-            set => Properties.Settings.Default.OwnUsername = value;
-        }
-        public static bool IgnoreOwnMessages
-        {
-            get => Properties.Settings.Default.IgnoreOwnMessages;
-            set => Properties.Settings.Default.IgnoreOwnMessages = value;
-        }
 
         public static void ValidateSettings()
         {
@@ -35,8 +25,6 @@ namespace CsTranslator.Helpers
         {
             Language = "en";
             InstallationPath = @"C:\Program Files (x86)\Steam\steamapps\common\Counter-Strike Global Offensive";
-            OwnUsername = "";
-            IgnoreOwnMessages = false;
            
             Save();
         }
