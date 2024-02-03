@@ -1,4 +1,4 @@
-# CS2-Translator
+# CS2-Translator ![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/ParadoxLeon/CS2-Translator/total?style=for-the-badge&logo=GitHub&color=%23663399)
 Easy to use single file CS2 chat translation tool. 
 
 You probably know the feeling of not being able to communicate in a match because everyone speaks a different language.
