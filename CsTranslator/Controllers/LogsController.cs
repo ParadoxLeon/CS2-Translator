@@ -209,9 +209,11 @@ namespace CsTranslator.Controllers
             var returnNames = new List<string>();
             var returnMessages = new List<string>();
 
+            var filterList = new List<string> { "[ALL]", "[DEAD]" };
+
             foreach (var l in lines)
             {
-                /* filter out the massage */
+                /* filter out the message */
                 if (!l.Contains("[ALL]") && !l.Contains("﹫"))
                     continue;
 
@@ -224,17 +226,13 @@ namespace CsTranslator.Controllers
                 // use regular expression to remove the date and time pattern
                 namePart = Regex.Replace(namePart, @"\d{1,2}/\d{1,2} \d{1,2}:\d{1,2}:\d{1,2}", "").Trim();
 
-                //Comment when testing
-                if (namePart.StartsWith("[ALL]"))
-                    namePart = namePart.Substring(5).Trim();
-
-
-                /* removal of [DEAD] */
-                if (namePart.EndsWith("[DEAD]"))
-                    namePart = namePart.Substring(0, namePart.Length - 6).Trim();
-              
-                /* removing the ? after the username that is there for unknown reasons. */
-                namePart = namePart.Remove(namePart.Length - 1);
+                foreach (var filter in filterList)
+                {
+                    if (namePart.StartsWith(filter))
+                    {
+                        namePart = namePart.Substring(filter.Length).Trim();
+                    }
+                }
 
                 returnRawStrings.Add(l);
                 returnChatTypes.Add(chatType);
