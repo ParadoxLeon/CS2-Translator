@@ -15,8 +15,6 @@ All of this is accomplished using official CS2 launch options.
 3. start CS2 & CS2 Translator
 4. (Optional) Change the options in CS2 Translator to your liking. ([List of language codes](https://cloud.google.com/translate/docs/languages))
 
-### Your game needs to be set to English
-
 ## Update
 
 To update the translator just download the [latest Version](https://github.com/ParadoxLeon/CS2-Translator/releases) (or build it yourself)
