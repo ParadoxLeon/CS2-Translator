@@ -213,8 +213,8 @@ namespace CsTranslator.Controllers
 
             foreach (var l in lines)
             {
-                /* filter out the message */
-                if (!l.Contains("[ALL]") && !l.Contains("﹫"))
+
+                if (!Regex.IsMatch(l, @"\s\s\[\w+\]") && !l.Contains("﹫"))
                     continue;
 
                 var temp = l.Split(new[] { ": " }, 2, StringSplitOptions.None);
