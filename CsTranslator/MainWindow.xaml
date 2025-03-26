@@ -12,6 +12,24 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
         <ListView x:Name="ChatView" BorderThickness="0.3" BorderBrush="White" HorizontalAlignment="Left" Margin="-2,0,0,0" VerticalAlignment="Top" Height="357" Width="766" Grid.ColumnSpan="3" SelectionChanged="ChatView_SelectionChanged" Background="#FF2F2F2F" Foreground="White">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="BorderThickness" Value="0"/>
+                    <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+                    <EventSetter Event="PreviewMouseRightButtonUp" Handler="ListViewItem_MouseRightButtonUp"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#555555"/>
+                        </Trigger>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background" Value="#444444"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </ListView.ItemContainerStyle>
+
             <ListView.View>
                 <GridView>
                     <GridView.ColumnHeaderContainerStyle>
@@ -41,5 +59,15 @@
            HorizontalAlignment="Left" VerticalAlignment="Top"
            MouseLeftButtonUp="dismissUpdate_MouseLeftButtonUp" Margin="145,387,0,0" Grid.Column="1" ToolTip="Dismiss Update"/>
 
+        <TextBlock x:Name="CopyNotification"
+           Text="Copied!"
+           Foreground="White"
+           Background="#FF2F2F2F"
+           Padding="5"
+           FontSize="16"
+           Visibility="Collapsed"
+           HorizontalAlignment="Left"
+           VerticalAlignment="Bottom"
+           Margin="349,0,0,10"/>
     </Grid>
 </Window>

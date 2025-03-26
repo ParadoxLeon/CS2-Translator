@@ -7,6 +7,8 @@ using System.Windows;
 using System.Windows.Media;
 using System.Windows.Navigation;
 using System.Windows.Threading;
+using System.Windows.Input;
+using System.Windows.Controls;
 using CsTranslator.Controllers;
 using CsTranslator.Enums;
 using CsTranslator.EventArgs;
@@ -79,10 +81,12 @@ namespace CsTranslator
             e.Handled = true;
         }
 
-        private void ChatView_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        private void ChatView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
-        
+            if (ChatView.SelectedItem is Chat selectedChat && selectedChat.Translation != null)
+            {
+                Clipboard.SetText(selectedChat.Translation.Message);
+            }
         }
 
         private async void CheckForUpdates()
@@ -117,5 +121,24 @@ namespace CsTranslator
             updateNotification.Visibility = Visibility.Collapsed;
             dismissUpdate.Visibility = Visibility.Collapsed;
         }
+
+        private void ListViewItem_MouseRightButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            if (sender is ListViewItem item && item.DataContext is Chat chat)
+            {
+                if (!string.IsNullOrEmpty(chat.Translation.Message))
+                {
+                    Clipboard.SetText(chat.Translation.Message);
+
+                    CopyNotification.Visibility = Visibility.Visible;
+
+                    Task.Delay(1500).ContinueWith(_ =>
+                    {
+                        Dispatcher.Invoke(() => CopyNotification.Visibility = Visibility.Collapsed);
+                    });
+                }
+            }
+        }
+
     }
 }
