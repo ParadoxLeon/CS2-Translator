@@ -115,9 +115,7 @@
     <Compile Include="Exceptions\TranslatorException.cs" />
     <Compile Include="Helpers\OptionsManager.cs" />
     <Compile Include="Helpers\VersionChecker.cs" />
-    <Compile Include="Models\Command.cs" />
     <Compile Include="Models\Log.cs" />
-    <Compile Include="Models\TransCommand.cs" />
     <Compile Include="Models\Translation.cs" />
     <Compile Include="OptionsWindow.xaml.cs">
       <DependentUpon>OptionsWindow.xaml</DependentUpon>
