@@ -132,6 +132,8 @@ namespace CsTranslator
 
                     CopyNotification.Visibility = Visibility.Visible;
 
+                    item.IsSelected = false;
+
                     Task.Delay(1500).ContinueWith(_ =>
                     {
                         Dispatcher.Invoke(() => CopyNotification.Visibility = Visibility.Collapsed);
@@ -140,5 +142,17 @@ namespace CsTranslator
             }
         }
 
+        private void TitleBar_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                this.DragMove();
+            }
+        }
+
+        private void CloseButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

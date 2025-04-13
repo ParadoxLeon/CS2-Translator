@@ -4,70 +4,166 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="CS Translator" Height="484" Width="778" ResizeMode="NoResize" Background="#FF2F2F2F" WindowStartupLocation="CenterScreen">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="149*"/>
-            <ColumnDefinition Width="123*"/>
-            <ColumnDefinition />
-        </Grid.ColumnDefinitions>
-        <ListView x:Name="ChatView" BorderThickness="0.3" BorderBrush="White" HorizontalAlignment="Left" Margin="-2,0,0,0" VerticalAlignment="Top" Height="357" Width="766" Grid.ColumnSpan="3" SelectionChanged="ChatView_SelectionChanged" Background="#FF2F2F2F" Foreground="White">
-            <ListView.ItemContainerStyle>
-                <Style TargetType="ListViewItem">
-                    <Setter Property="Background" Value="Transparent"/>
-                    <Setter Property="Foreground" Value="White"/>
-                    <Setter Property="BorderThickness" Value="0"/>
-                    <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
-                    <EventSetter Event="PreviewMouseRightButtonUp" Handler="ListViewItem_MouseRightButtonUp"/>
-                    <Style.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" Value="#555555"/>
-                        </Trigger>
-                        <Trigger Property="IsSelected" Value="True">
-                            <Setter Property="Background" Value="#444444"/>
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </ListView.ItemContainerStyle>
+        Title="CS Translator" 
+        Height="490"
+    Width="780" 
+        ResizeMode="NoResize"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        WindowStartupLocation="CenterScreen"
+        FontFamily="Segoe UI">
 
-            <ListView.View>
-                <GridView>
-                    <GridView.ColumnHeaderContainerStyle>
-                        <Style TargetType="{x:Type GridViewColumnHeader}">
-                            <Setter Property="IsEnabled" Value="False"/>
+    <Window.Resources>
+        <Style x:Key="TitleBarButton" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="Foreground" Value="#FFE0E0E0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border" 
+                            Background="{TemplateBinding Background}"
+                            SnapsToDevicePixels="True">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#FF3A3A3A"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#FF2A2A2A"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Border BorderBrush="#FF3E3E3E" BorderThickness="1" CornerRadius="4" Background="#FF121212">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="32"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0" Background="#FF1E1E1E" MouseDown="TitleBar_MouseDown">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Text="CS Translator" 
+                          Foreground="#FFE0E0E0" 
+                          VerticalAlignment="Center" 
+                          Margin="10,0,0,0"
+                          FontSize="14"/>
+
+                <Button Grid.Column="1" 
+                        Content="✕" 
+                        Width="40" 
+                        Style="{StaticResource TitleBarButton}"
+                        Click="CloseButton_Click"
+                        ToolTip="Close"/>
+            </Grid>
+
+            <Border Grid.Row="1" CornerRadius="0" Background="#FF1E1E1E" BorderThickness="0" Margin="8,8,8,8">
+                <ListView x:Name="ChatView" Background="Transparent" Foreground="#FFE0E0E0" 
+                          ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderThickness="0">
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="Foreground" Value="#FFE0E0E0"/>
+                            <Setter Property="BorderThickness" Value="0"/>
+                            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+                            <Setter Property="Padding" Value="8 6"/>
+                            <EventSetter Event="PreviewMouseRightButtonUp" Handler="ListViewItem_MouseRightButtonUp"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#FF2D2D2D"/>
+                                </Trigger>
+                                <Trigger Property="IsSelected" Value="True">
+                                    <Setter Property="Background" Value="#FF2D2D2D"/>
+                                </Trigger>
+                            </Style.Triggers>
                         </Style>
-                    </GridView.ColumnHeaderContainerStyle>
-                    <GridViewColumn Header="Name" Width="200" DisplayMemberBinding="{Binding Name}" />
-                    <GridViewColumn Header="Translation" Width="557">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding Translation.Message}" TextWrapping="Wrap" />
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                </GridView>
-            </ListView.View>
-        </ListView>
-        <Button Content="Options" Margin="205,400,10,10" Click="BtnOptions_Click" Grid.Column="1" RenderTransformOrigin="0.505,0.514"/>
-        <Label x:Name="LblError" Grid.Column="1" HorizontalAlignment="Left" Margin="0,361,0,0" VerticalAlignment="Top" FontSize="20" Content="" Foreground="#FFB03131"/>
-        <TextBlock x:Name="updateNotification" Text="A new version is available! Click here to update." 
-                   Visibility="Collapsed" Foreground="Red" FontSize="16"
-                   HorizontalAlignment="Left" VerticalAlignment="Top"
-                   MouseLeftButtonUp="UpdateNotification_MouseLeftButtonUp" Grid.ColumnSpan="2" Margin="222,405,0,0"/>
-        <TextBlock x:Name="dismissUpdate" Text="x"
-           Visibility="Collapsed" Foreground="Red" FontSize="20"
-           HorizontalAlignment="Left" VerticalAlignment="Top"
-           MouseLeftButtonUp="dismissUpdate_MouseLeftButtonUp" Margin="145,387,0,0" Grid.Column="1" ToolTip="Dismiss Update"/>
+                    </ListView.ItemContainerStyle>
 
-        <TextBlock x:Name="CopyNotification"
-           Text="Copied!"
-           Foreground="White"
-           Background="#FF2F2F2F"
-           Padding="5"
-           FontSize="16"
-           Visibility="Collapsed"
-           HorizontalAlignment="Left"
-           VerticalAlignment="Bottom"
-           Margin="349,0,0,10"/>
-    </Grid>
+                    <ListView.View>
+                        <GridView>
+                            <GridView.ColumnHeaderContainerStyle>
+                                <Style TargetType="{x:Type GridViewColumnHeader}">
+                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                </Style>
+                            </GridView.ColumnHeaderContainerStyle>
+                            <GridViewColumn Width="200">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Name}" TextWrapping="Wrap"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Width="560">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Translation.Message}" TextWrapping="Wrap" Padding="0 2"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </Border>
+
+            <Grid Grid.Row="2" Margin="8,0,8,8">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <Label x:Name="LblError" Grid.Column="0" Foreground="#FFCF6679" FontSize="14" VerticalAlignment="Center" Content="" Padding="4,0,0,0"/>
+
+                <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                    <TextBlock x:Name="updateNotification" Text="A new version is available. Click here to update." Visibility="Collapsed" Foreground="#FF3F8DD1" FontSize="14" VerticalAlignment="Center" MouseLeftButtonUp="UpdateNotification_MouseLeftButtonUp" Margin="0,0,8,0"/>
+                    <Button x:Name="dismissUpdate" Content="✕" Visibility="Collapsed" Foreground="#FFA0A0A0" Background="Transparent" BorderThickness="0" Padding="4" MouseLeftButtonUp="dismissUpdate_MouseLeftButtonUp" ToolTip="Dismiss Update"/>
+                </StackPanel>
+
+                <Button Grid.Column="2" Content="Options" Click="BtnOptions_Click" 
+                        Margin="8,0,0,0" Padding="12 6" 
+                        Background="#FF2D2D2D" BorderBrush="#FF3D3D3D" Foreground="#FFE0E0E0"
+                        Width="80" Height="32">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border x:Name="border" 
+                                    CornerRadius="6" 
+                                    Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="2">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="border" Property="Background" Value="#FF3A3A3A"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Cursor" Value="Hand"/>
+                        </Style>
+                    </Button.Style>
+                </Button>
+            </Grid>
+
+            <Border x:Name="CopyNotification" Grid.Row="2" CornerRadius="4" Background="#FF3F8DD1" Padding="12 6" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="12,0,0,12" Visibility="Collapsed">
+                <TextBlock Text="Copied!" Foreground="White" FontSize="14" FontWeight="SemiBold"/>
+            </Border>
+        </Grid>
+    </Border>
 </Window>
