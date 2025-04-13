@@ -119,7 +119,7 @@
                 </ListView>
             </Border>
 
-            <Grid Grid.Row="2" Margin="8,0,8,8">
+            <Grid Grid.Row="2" Margin="8,8,8,8">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="Auto"/>
@@ -161,7 +161,7 @@
                 </Button>
             </Grid>
 
-            <Border x:Name="CopyNotification" Grid.Row="2" CornerRadius="4" Background="#FF3F8DD1" Padding="12 6" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="12,0,0,12" Visibility="Collapsed">
+            <Border x:Name="CopyNotification" Grid.Row="2" CornerRadius="4" Background="#FF3F8DD1" Padding="12 6" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="8,0,0,12" Visibility="Collapsed">
                 <TextBlock Text="Copied!" Foreground="White" FontSize="14" FontWeight="SemiBold"/>
             </Border>
         </Grid>
