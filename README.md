@@ -41,8 +41,3 @@ Make sure to delete the old one.
 * The current method of using Google Translate is rate-limited at 100 requests / hour.
 * Can't detect messages on certain community servers because of different chat structures.
 
-### What I changed:
-- switched to Dark Mode
-- removed options for telnet
-- changed the default location
-- added Text wrapping
