@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 public static class Version
 {
-    public const string CurrentVersion = "1.3.3";
+    public const string CurrentVersion = "1.4.0";
 }
 
 public class VersionChecker

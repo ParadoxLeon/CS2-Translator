@@ -209,15 +209,13 @@ namespace CsTranslator.Controllers
             var returnNames = new List<string>();
             var returnMessages = new List<string>();
 
-            var filterList = new List<string> { "[ALL]", "[DEAD]" };
-
             foreach (var l in lines)
             {
-
                 if (!Regex.IsMatch(l, @"\s\s\[\w+\]") && !l.Contains("﹫"))
                     continue;
 
                 var temp = l.Split(new[] { ": " }, 2, StringSplitOptions.None);
+                if (temp.Length < 2) continue;
 
                 var chatType = ChatType.All;
                 var namePart = temp[0].Trim();
@@ -226,13 +224,9 @@ namespace CsTranslator.Controllers
                 // use regular expression to remove the date and time pattern
                 namePart = Regex.Replace(namePart, @"\d{1,2}/\d{1,2} \d{1,2}:\d{1,2}:\d{1,2}", "").Trim();
 
-                foreach (var filter in filterList)
-                {
-                    if (namePart.StartsWith(filter))
-                    {
-                        namePart = namePart.Substring(filter.Length).Trim();
-                    }
-                }
+                namePart = Regex.Replace(namePart, @"\[\w+\]", "").Trim();
+
+                namePart = Regex.Replace(namePart, @"﹫\w+", "").Trim();
 
                 returnRawStrings.Add(l);
                 returnChatTypes.Add(chatType);
