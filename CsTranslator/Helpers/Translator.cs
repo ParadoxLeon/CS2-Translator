@@ -7,6 +7,7 @@ using System.Web;
 using CsTranslator.EventArgs;
 using CsTranslator.Exceptions;
 using CsTranslator.Models;
+using System.Text.Json;
 
 namespace CsTranslator.Helpers
 {
@@ -57,7 +58,12 @@ namespace CsTranslator.Helpers
                     wc.Headers.Add("user-agent", "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36");
                     wc.DownloadFile(url, outputFile);
                 }
-                var message = File.ReadAllText(outputFile).Substring(4).Split('"')[0];
+
+                var json = File.ReadAllText(outputFile);
+                var parsed = JsonSerializer.Deserialize<JsonElement>(json);
+
+                var message = parsed[0][0][0].GetString();
+
                 return new Translation(lang, message);
             }
             catch (WebException e)
