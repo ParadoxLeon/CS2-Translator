@@ -23,9 +23,10 @@ namespace CsTranslator.Helpers
         public static Translation GetTranslation(string sourceText, string lang = null)
         {
             lang ??= Properties.Settings.Default.Lang;
+            var key = sourceText + ":" + lang;
 
-            if (CachedTranslations.ContainsKey(sourceText + lang))
-                return CachedTranslations[sourceText + lang];
+            if (TranslationCache.TryGet(key, out var cached))
+                return cached;
 
             Translation translation;
             try
@@ -40,10 +41,10 @@ namespace CsTranslator.Helpers
                 MainWindow.ErrorEncountered(null, new TranslatorExceptionEventArgs { Exception = e });
             }
 
-            CachedTranslations[sourceText + lang] = translation;
-
+            TranslationCache.Add(key, translation);
             return translation;
         }
+
 
         private static Translation Translate(string sourceText, string lang)
         {

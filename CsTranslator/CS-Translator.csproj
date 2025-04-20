@@ -126,6 +126,7 @@
     <Compile Include="Exceptions\NoInternetException.cs" />
     <Compile Include="Exceptions\TranslatorException.cs" />
     <Compile Include="Helpers\OptionsManager.cs" />
+    <Compile Include="Helpers\TranslationCache.cs" />
     <Compile Include="Helpers\VersionChecker.cs" />
     <Compile Include="Models\Log.cs" />
     <Compile Include="Models\Translation.cs" />
