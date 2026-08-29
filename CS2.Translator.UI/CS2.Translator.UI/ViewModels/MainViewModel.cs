@@ -196,13 +196,33 @@ public partial class MainViewModel : ViewModelBase
         }
     }
 
+    [RelayCommand]
+    private void ClearChats()
+    {
+        try
+        {
+            DebugLog("ClearChats() invoked");
+
+            // Clear service-backed chats and UI list
+            _logsService.Chats.Clear();
+            Dispatcher.UIThread.Post(() => Chats.Clear());
+
+            StatusText = "Chats cleared";
+        }
+        catch (Exception ex)
+        {
+            DebugLogger.LogException(ex, "ClearChats");
+        }
+    }
+
     private static Chat CloneForUi(Chat c)
     {
         return new Chat(
             rawString: c.RawString,
             chatType: c.ChatType,
             name: c.Name,
-            message: c.Message
+            message: c.Message,
+            location: c.Location
         )
         {
             Translation = c.Translation

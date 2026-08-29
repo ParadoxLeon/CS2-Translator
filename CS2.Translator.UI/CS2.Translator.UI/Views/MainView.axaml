@@ -15,7 +15,7 @@
                 BorderBrush="#2E2E40"
                 BorderThickness="0,0,0,1">
 
-            <Grid ColumnDefinitions="*,Auto">
+            <Grid ColumnDefinitions="*,Auto,Auto">
                 <TextBlock
                     Text="CS2 Translator"
                     FontSize="16"
@@ -24,6 +24,14 @@
 
                 <Button
                     Grid.Column="1"
+                    Content="Clear Chat"
+                    Command="{Binding ClearChatsCommand}"
+                    Padding="10,4"
+                    Background="#3A3AF5"
+                    Foreground="White"
+                    CornerRadius="6"/>
+                <Button
+                    Grid.Column="2"
                     Content="Settings"
                     Command="{Binding OpenSettingsCommand}"
                     Padding="10,4"
@@ -52,14 +60,27 @@
                                 HorizontalAlignment="Left">
 
                                 <StackPanel Spacing="4">
-                                    <TextBlock
-                                        Text="{Binding Name}"
-                                        FontSize="{Binding DataContext.NameFontSize, RelativeSource={RelativeSource AncestorType=UserControl}}"
-                                        Foreground="#AAAAAA"/>
+									<StackPanel Orientation="Horizontal" Spacing="4">
+									    <TextBlock
+                                            Text="{Binding ChatType, StringFormat='[{0}]'}"
+                                            FontSize="{Binding DataContext.NameFontSize, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                            Foreground="#AAAAAA"/>
+                                        <TextBlock
+                                            Text="{Binding Name}"
+                                            FontSize="{Binding DataContext.NameFontSize, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                            FontFamily="'Noto Sans'"
+                                            Foreground="#AAAAAA"/>
+									    <TextBlock
+                                            Text="{Binding Location, StringFormat='@ {0}'}"
+                                            FontSize="{Binding DataContext.NameFontSize, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                            Foreground="#00FF00"
+											IsVisible="{Binding HasLocation}"/>
+									</StackPanel>
 
-                                    <TextBlock
+									<SelectableTextBlock
                                         Text="{Binding TranslationText}"
                                         FontSize="{Binding DataContext.TranslationFontSize, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                        FontFamily="'Cambria Math', 'Segoe UI Symbol', 'Segoe UI Emoji', 'Segoe UI', 'Arial Unicode MS'"
                                         TextWrapping="Wrap"
                                         Foreground="White"/>
                                 </StackPanel>

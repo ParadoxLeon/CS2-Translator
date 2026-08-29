@@ -6,5 +6,7 @@ public enum ChatType
     Team,
     Global,
     Dead,
-    Spectator
+    Spectator,
+    T,
+    CT
 }

@@ -9,6 +9,8 @@ public class Chat : Log, INotifyPropertyChanged
     public ChatType ChatType { get; }
     public string Name { get; }
     public string Message { get; }
+    public string? Location { get; }
+    public bool HasLocation => !string.IsNullOrWhiteSpace(Location);
 
     private Translation _translation;
     public Translation Translation
@@ -31,13 +33,15 @@ public class Chat : Log, INotifyPropertyChanged
         string rawString,
         ChatType chatType,
         string name,
-        string message
+        string message,
+        string? location = null
     ) : base(rawString)
     {
         ChatType = chatType;
         Name = name;
         Message = message;
         _translation = new Translation("?", "---");
+        Location = location;
     }
 
     public event PropertyChangedEventHandler? PropertyChanged;

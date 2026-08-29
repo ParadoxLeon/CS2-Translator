@@ -14,3 +14,6 @@ AppDir/
 # OS
 .DS_Store
 Thumbs.db
+
+# VS temp files
+.vs

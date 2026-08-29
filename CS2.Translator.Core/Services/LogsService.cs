@@ -271,11 +271,22 @@ public sealed class LogsService
                 continue;
 
             var namePart = Regex.Replace(split[0], @"\d{1,2}/\d{1,2} \d{1,2}:\d{1,2}:\d{1,2}", "");
+            Match m = Regex.Match(namePart, @"\[(\w+)\]");
+            ChatType chatType = ChatType.All;
+            if (m.Success && m.Groups.Count > 1)
+                if (!Enum.TryParse<ChatType>(m.Groups[1].Value, true, out chatType))
+                    continue;
+
             namePart = Regex.Replace(namePart, @"\[\w+\]", "");
-            namePart = Regex.Replace(namePart, @"﹫\w+", "").Trim();
+            Match m2 = new Regex(@"﹫(.*)", RegexOptions.IgnoreCase).Match(namePart);
+            string? location = null;
+            if (m.Success && m.Groups.Count > 1)
+                location = m2.Groups[1].Value;
+
+            namePart = Regex.Replace(namePart, @"﹫.*", "").Trim();
             var messagePart = split[1].Trim();
 
-            chats.Add(new Chat(line, ChatType.All, namePart, messagePart));
+            chats.Add(new Chat(line, chatType, namePart, messagePart, location));
         }
 
         return chats;
